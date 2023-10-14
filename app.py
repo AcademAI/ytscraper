@@ -3,7 +3,8 @@ from flask_cors import CORS
 import scrapetube
 
 app = Flask(__name__)
-CORS(app, origins='http://youknow:3000')
+#docker inspect -f '{{.NetworkSettings.Networks.[Network].IPAddress}}' [container]
+CORS(app, origins='http://172.19.0.2:3000')
 
 @app.route('/search', methods=['GET', 'OPTIONS'])
 def search():

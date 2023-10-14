@@ -18,4 +18,4 @@ jobs:
           username: ${{ secrets.USER_NAME }}
           private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
-          commands: cd /root/ytscraper; git reset --hard; git checkout main; git pull origin main; docker stop ytscraper; docker rm ytscraper; docker rmi ytscraper; docker image prune -a -f; docker build -t ytscraper .; docker run --detach --network tunnel --name ytscraper ytscraper
+          commands: cd /root/ytscraper; git reset --hard; git checkout main; git pull origin main; docker stop ytscraper; docker rm ytscraper; docker rmi ytscraper; docker build -t ytscraper .; docker run --detach --network tunnel --name ytscraper ytscraper; docker image prune -a -f;
