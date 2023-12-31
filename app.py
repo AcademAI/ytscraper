@@ -4,7 +4,7 @@ import scrapetube
 
 app = Flask(__name__)
 # docker inspect -f '{{.NetworkSettings.Networks.[Network].IPAddress}}' [container]
-CORS(app, origins='http://0.0.0.0:3000')
+CORS(app, origins='http://172.19.0.3:3000')
 
 @app.route('/search', methods=['GET', 'OPTIONS'])
 def search():
@@ -22,4 +22,4 @@ def search():
     return jsonify(video_ids_list)
 
 if __name__ == '__main__':
-    app.run(debug=False, port=8224, host='0.0.0.0')
+    app.run(debug=False, port=8224, host='172.19.0.4')
