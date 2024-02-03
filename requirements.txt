@@ -1,3 +1,4 @@
 scrapetube
 flask
 flask-cors
+python-dotenv

@@ -1,10 +1,17 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import scrapetube
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+YOUKNOW_URL = os.getenv('YOUKNOW_URL')
+YTSCRAPER_URL = os.getenv('YTSCRAPER_URL')
 
 app = Flask(__name__)
 # docker inspect -f '{{.NetworkSettings.Networks.[Network].IPAddress}}' [container]
-CORS(app, origins='http://172.19.0.3:3000')
+CORS(app, origins=str(YOUKNOW_URL))
 
 @app.route('/search', methods=['GET', 'OPTIONS'])
 def search():
@@ -22,4 +29,4 @@ def search():
     return jsonify(video_ids_list)
 
 if __name__ == '__main__':
-    app.run(debug=False, port=8224, host='172.19.0.6')
+    app.run(debug=True, port=8224, host=str(YTSCRAPER_URL))
